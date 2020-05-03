@@ -17,11 +17,23 @@ async function getRequest() {
     // console.log(response.data);
     let html = response.data;
     html = html.replace(/\r?\n/g,""); //整形1: 改行などを削除して整形しやすくする
+    
+    //運行情報
     let unko = html.match(/id="mdServiceStatus">(.*?)<\/div>/)[1];
     unko = unko.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,''); //整形2: タグを削除
     console.log(unko);
 
-    await updateData({msg: unko}); //データ更新関数を実行
+    //時間
+    let jikan = html.match(/class="subText">(.*?)<\/span>/)[1];
+    jikan = jikan.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,''); //整形2: タグを削除
+    console.log(jikan);
+
+    const saveData = {
+        date: jikan,
+        msg: unko
+    }
+
+    await updateData(saveData); //データ更新関数を実行
   } catch (error) {
     console.error(error);
   }

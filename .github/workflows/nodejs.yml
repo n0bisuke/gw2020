@@ -38,7 +38,7 @@ jobs:
     # Secret の LINE_TOKEN 値 を action.js に渡している
     # LINE Notify にメッセージが行く
     - name: LINE Notify app.js
-      run: LINE_TOKEN=${{secrets.LINE_TOKEN}} node datasync.js
+      run: LINE_TOKEN=${{secrets.LINE_TOKEN}} node yamanote.js
 
     - name: Commit files
       run: |
