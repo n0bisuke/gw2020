@@ -7,7 +7,7 @@ on:
 # on:
 #   schedule:
 #   - cron:  '*/5 * * * *'
-  # ここだけ変更
+# ここだけ変更
 
 jobs:
   build:
