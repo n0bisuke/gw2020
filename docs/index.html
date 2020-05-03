@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Hello My WebSite!</title>
+  </head>
+  <body>
+    <p>Hello, ProtoOut!</p>
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+    </script>
+  </body>
+</html>

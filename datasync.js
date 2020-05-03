@@ -1,11 +1,11 @@
 'use strcit';
 
 const axios = require('axios');
-const fs = require("fs"); //注: npm i 不要
+const fs = require('fs'); //注: npm i 不要
 
 //データ更新関数
 async function updateData(newData){
-    const PATH = "./docs/data1.json";
+    const PATH = './docs/data1.json';
     fs.writeFileSync(PATH, JSON.stringify(newData));
 }
 
