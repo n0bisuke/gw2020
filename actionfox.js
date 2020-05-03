@@ -8,7 +8,7 @@ const LINE_NOTIFY_API_URL = 'https://notify-api.line.me/api/notify';
 // 実際には、GitHub Actions の
 // run: LINE_TOKEN=${{secrets.LINE_TOKEN}} node action.js
 // という書き方で渡されています
-const LINE_NOTIFY_TOKEN = process.env.LINE_TOKEN || 'とーくん';
+const LINE_NOTIFY_TOKEN = process.env.LINE_TOKEN || 'mZ20574N36I7ME0HrgZMP1AOAjplTqoL7fb6PghVQQD';
 
 let config = {
     url: LINE_NOTIFY_API_URL,
@@ -17,29 +17,23 @@ let config = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ' + LINE_NOTIFY_TOKEN
     },
-    data: qs.stringify({
-      imageFullsize: `https://images.dog.ceo/breeds/airedale/n02096051_3443.jpg`,
-      imageThumbnail: `https://images.dog.ceo/breeds/airedale/n02096051_3443.jpg`,
-      message: 'ProtoOut Studioからの通知だよー！ https://images.dog.ceo/breeds/airedale/n02096051_3443.jpg',
-    })
+    data: ''
 }
 
 async function getRequest() {
 
   ////// LINE Notify に送る ////////////////////////
-
+  let foxResponse;
   try {
-    const foxResponse = await axios.get('https://randomfox.ca/floof/');
-    // console.log(foxResponse.data.image);
-    const foxImage = foxResponse.data.image;
-    config.data = qs.stringify({
-      imageFullsize: foxImage,
-      imageThumbnail: foxImage,
-      message: 'ProtoOut Studioからの通知だよー！',
-    })
-
-    const responseLINENotify = await axios.request(config); //LINE Notifyに送る
+    foxResponse = await axios.get(`https://randomfox.ca/floof/`);
+    console.log(foxResponse.data.image);
+    config.data = {
+        message: 'ProtoOut Studioからの通知だよー！GitHub Actionsだよー！',
+        imageThumbnail: foxResponse.data.image,
+        imageFullsize: foxResponse.data.image,
+    }
     console.log(responseLINENotify.data);
+    const responseLINENotify = await axios.request(config);
   } catch (error) {
     console.error(error);
   }
