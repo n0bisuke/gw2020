@@ -1,6 +1,6 @@
 name: LINE notify
 
-on:
+# on:
   # schedule:
   # - cron:  '*/5 * * * *'
   # 5分ごと # ここだけ変更
