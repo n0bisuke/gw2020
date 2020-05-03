@@ -11,11 +11,25 @@
 
     <!-- 開発バージョン、便利なコンソールの警告が含まれています -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        var app = new Vue({
+        const app = new Vue({
             el: '#app',
             data: {
                 message: 'Hello Vue!'
+            },
+
+            methods: {
+                getData: async function(){
+                    const response = await axios.get('data.json')
+                    console.log(response.data);
+                    //ここでデータ加工が必要そう
+                    this.message = response.data;
+                },
+            },
+
+            mounted: function(){
+                this.getData();
             }
         })
     </script>
