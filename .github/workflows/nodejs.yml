@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     # このジョブのために ubuntu サーバーを準備する
     # まっさらなサーバーなので、以下で Node.js 自体の準備や npm install を行う
     runs-on: ubuntu-latest
