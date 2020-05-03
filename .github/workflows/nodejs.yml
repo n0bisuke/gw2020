@@ -1,13 +1,13 @@
 name: LINE notify
 
-on:
-  push:
-    branches: [ master ]
-
 # on:
-  # schedule:
-  # - cron:  '*/5 * * * *'
-  # 5分ごと # ここだけ変更
+#   push:
+#     branches: [ master ]
+
+on:
+  schedule:
+  - cron:  '*/5 * * * *'
+  5分ごと # ここだけ変更
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
 
     # この例では、v2 を使用することにより、チェックアウトアクションの安定版を確実に使用するようにしています
     - uses: actions/checkout@v2
-    # Node.js 13.x のセットアップ
+    # Node.js 14.x のセットアップ
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
@@ -39,12 +39,14 @@ jobs:
     # LINE Notify にメッセージが行く
     - name: LINE Notify app.js
       run: LINE_TOKEN=${{secrets.LINE_TOKEN}} node datasync.js
+
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Add changes" -a
+    
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
