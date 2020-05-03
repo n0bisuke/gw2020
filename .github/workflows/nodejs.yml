@@ -1,9 +1,9 @@
 name: LINE notify
 
 on:
-  push:
-    branches: [ master ]
-    # プッシュ時に動作する
+  schedule:
+  - cron:  '*/5 * * * *'
+  # 5分ごと # ここだけ変更
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     # このジョブ自体をテストするためのテスト戦略 → 13.x で行う
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [13.x]
 
     # 以下が実際のステップ
     steps:
