@@ -4,7 +4,6 @@ const qs = require('querystring');
 const LINE_NOTIFY_API_URL = 'https://notify-api.line.me/api/notify';
 
 // GitHub Actions で実行する際に Secret 値 LINE_TOKEN を利用する
-// 
 // 実際には、GitHub Actions の
 // run: LINE_TOKEN=${{secrets.LINE_TOKEN}} node action.js
 // という書き方で渡されています
