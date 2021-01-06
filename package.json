@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/n0bisuke/gw2020#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   }
 }
